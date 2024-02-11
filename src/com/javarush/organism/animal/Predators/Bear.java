@@ -7,7 +7,7 @@ import com.javarush.organism.Organism;
 import java.util.Objects;
 
 
-public class Wolf extends Predator {
+public class Bear extends Predator {
 
 
     int maxFood;
@@ -20,9 +20,9 @@ public class Wolf extends Predator {
     String name;
     public Cell cell;
 
-    public Wolf(String id,Integer weight) {
+    public Bear(String id,Integer weight) {
         super(id);
-        this.weight = weight;
+        this.weight = 500;
         this.id = id;
     }
 
@@ -41,8 +41,8 @@ public class Wolf extends Predator {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-        Wolf wolf = (Wolf) o;
-        return maxFood == wolf.maxFood && isAlive == wolf.isAlive && weight == wolf.weight && health == wolf.health && maxAmount == wolf.maxAmount && maxSpeed == wolf.maxSpeed && Objects.equals(id, wolf.id) && Objects.equals(name, wolf.name) && Objects.equals(cell, wolf.cell);
+        Bear bear = (Bear) o;
+        return maxFood == bear.maxFood && isAlive == bear.isAlive && weight == bear.weight && health == bear.health && maxAmount == bear.maxAmount && maxSpeed == bear.maxSpeed && Objects.equals(id, bear.id) && Objects.equals(name, bear.name) && Objects.equals(cell, bear.cell);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class Wolf extends Predator {
 
     @Override
     public String toString() {
-        return "Wolf{" +
+        return "Bear{" +
                 "maxFood=" + maxFood +
                 ", isAlive=" + isAlive +
                 ", weight=" + weight +
@@ -64,12 +64,12 @@ public class Wolf extends Predator {
 
     @Override
     public String getName() {
-        return "Wolf";
+        return "Bear";
     }
 
     @Override
     public int getMaxFood() {
-        return maxFood=8;
+        return maxFood;
     }
 
     @Override
@@ -138,16 +138,17 @@ public class Wolf extends Predator {
     }
     @Override
     public String getTypeResidents() {
-        return "Wolf";
+        return "Bear";
     }
     @Override
     public int getAttack(String organisms) {
         return switch (organisms) {
-            case "Horse","Buffalo" -> 10;
-            case "Deer","Boar"->15;
-            case "Duck"->40;
-            case "Sheep"->70;
-            case "Rabbit", "Goat" -> 60;
+            case "Python","Rabbit", "Deer"->80;
+            case "Horse"->40;
+            case "Duck"->10;
+            case  "Sheep","Goat"-> 70;
+            case "Boar"->50;
+            case "Buffalo"->20;
             default ->0;
         };
     }
@@ -162,7 +163,7 @@ public class Wolf extends Predator {
         return null;
     }
 }
-
+    
 
 
 

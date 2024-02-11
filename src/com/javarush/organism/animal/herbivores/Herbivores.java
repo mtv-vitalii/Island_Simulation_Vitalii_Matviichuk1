@@ -1,7 +1,6 @@
 package com.javarush.organism.animal.herbivores;
 
 import com.javarush.organism.Organism;
-import com.javarush.organism.Residents;
 import com.javarush.organism.animal.Animal;
 
 public abstract class Herbivores extends Animal {

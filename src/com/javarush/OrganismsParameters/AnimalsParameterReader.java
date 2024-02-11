@@ -1,4 +1,4 @@
-package com.javarush.organism.animal;
+package com.javarush.OrganismsParameters;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -9,10 +9,10 @@ public class AnimalsParameterReader {
 
     public List<AnimalSpecies> readSpeciesFromFile() throws FileNotFoundException {
         List<AnimalSpecies> species = new ArrayList<>();
-        Scanner scanner = new Scanner(new File("C:\\Users\\matvv\\IdeaProjects\\Island_Simulation_Vitalii_Matviichuk\\src\\com\\javarush\\organism\\OrganismSpecies"));
+        Scanner scanner = new Scanner(new File("C:\\Users\\matvv\\IdeaProjects\\Island_Simulation_Vitalii_Matviichuk\\src\\com\\javarush\\OrganismsParameters\\OrganismSpecies"));
 
         if (scanner.hasNextLine()) {
-            scanner.nextLine();
+            scanner.nextLine();//перший рядок пропускаємо
         }
 
         while (scanner.hasNextLine()) {
@@ -31,6 +31,7 @@ public class AnimalsParameterReader {
         scanner.close();
         return species;
     }
+
 
     @Override
     public String toString() {

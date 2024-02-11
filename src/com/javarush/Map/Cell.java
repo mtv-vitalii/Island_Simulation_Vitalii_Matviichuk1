@@ -1,9 +1,9 @@
 package com.javarush.Map;
 
-import com.javarush.OrganismFactory.*;
+import com.javarush.OrganismFactory.GeneralOrganismFactory;
 import com.javarush.organism.Organism;
-import com.javarush.organism.animal.AnimalSpecies;
-import com.javarush.organism.animal.AnimalsParameterReader;
+import com.javarush.OrganismsParameters.AnimalSpecies;
+import com.javarush.OrganismsParameters.AnimalsParameterReader;
 import com.javarush.organism.plant.Grass;
 
 import java.io.FileNotFoundException;
@@ -12,35 +12,23 @@ import java.util.*;
 public class Cell {
 
     private List<Organism> residents;
-    private static final Map<String, OrganismFactory> factories = new HashMap<>();
-
-    static {
-        initializeFactories();
-    }
-
-    private static void initializeFactories() {
-        factories.put("Wolf", new WolfFactory());
-        factories.put("Horse", new HorseFactory());
-        factories.put("Goat", new GoatFactory());
-        factories.put("Rabbit", new RabbitFactory());
-        factories.put("Grass", new GrassFactory());
-    }
+    private GeneralOrganismFactory generalFactory;
 
     public Cell() throws FileNotFoundException {
         residents = new ArrayList<>();
+        generalFactory = new GeneralOrganismFactory(); // Ініціалізуємо фабрику
         populateCell();
     }
-
 
     public void populateCell() throws FileNotFoundException {
         AnimalsParameterReader animalsParameterReader = new AnimalsParameterReader();
         List<AnimalSpecies> speciesNames = animalsParameterReader.readSpeciesFromFile();
         for (AnimalSpecies species : speciesNames) {
-            OrganismFactory factory = factories.get(species.getName());
-            if (factory != null) {
-                int count = getRandomCount(species.getMaxCount());
-                for (int i = 0; i < count; i++) {
-                    residents.add(factory.createOrganism());
+            int count = getRandomCount(species.getMaxCount());
+            for (int i = 0; i < count; i++) {
+                Organism organism = generalFactory.createOrganism(species.getName());
+                if (organism != null) {
+                    residents.add(organism);
                 }
             }
         }
@@ -51,7 +39,6 @@ public class Cell {
         return (int) (Math.random() * (maxCount + 1));
     }
 
-
     public void addOrganism(Organism organism) {
         residents.add(organism);
     }
@@ -59,6 +46,7 @@ public class Cell {
     public void removeOrganism(Organism organism) {
         residents.remove(organism);
     }
+
     public void removeGrass() {
         // Шукаємо екземпляр трави серед організмів
         Iterator<Organism> iterator = this.residents.iterator();
@@ -71,10 +59,10 @@ public class Cell {
         }
     }
 
-
     public List<Organism> getOrganism() {
         return residents;
     }
+
     public boolean hasGrass() {
         for (Organism organism : residents) {
             if (organism instanceof Grass) {
@@ -89,20 +77,18 @@ public class Cell {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Cell cell = (Cell) o;
-        return Objects.equals(residents, cell.residents) && Objects.equals(factories, cell.factories);
+        return Objects.equals(residents, cell.residents);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(residents, factories);
+        return Objects.hash(residents);
     }
 
     @Override
     public String toString() {
         return "Cell{" +
                 "residents=" + residents +
-                ", factories=" + factories +
                 '}';
     }
 }
-

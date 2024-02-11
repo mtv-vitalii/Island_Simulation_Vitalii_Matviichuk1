@@ -7,7 +7,7 @@ import com.javarush.organism.Organism;
 import java.util.Objects;
 
 
-public class Wolf extends Predator {
+public class Eagle extends Predator {
 
 
     int maxFood;
@@ -20,9 +20,9 @@ public class Wolf extends Predator {
     String name;
     public Cell cell;
 
-    public Wolf(String id,Integer weight) {
+    public Eagle(String id,Integer weight) {
         super(id);
-        this.weight = weight;
+        this.weight = 6;
         this.id = id;
     }
 
@@ -41,8 +41,8 @@ public class Wolf extends Predator {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-        Wolf wolf = (Wolf) o;
-        return maxFood == wolf.maxFood && isAlive == wolf.isAlive && weight == wolf.weight && health == wolf.health && maxAmount == wolf.maxAmount && maxSpeed == wolf.maxSpeed && Objects.equals(id, wolf.id) && Objects.equals(name, wolf.name) && Objects.equals(cell, wolf.cell);
+        Eagle eagle = (Eagle) o;
+        return maxFood == eagle.maxFood && isAlive == eagle.isAlive && weight == eagle.weight && health == eagle.health && maxAmount == eagle.maxAmount && maxSpeed == eagle.maxSpeed && Objects.equals(id, eagle.id) && Objects.equals(name, eagle.name) && Objects.equals(cell, eagle.cell);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class Wolf extends Predator {
 
     @Override
     public String toString() {
-        return "Wolf{" +
+        return "Eagle{" +
                 "maxFood=" + maxFood +
                 ", isAlive=" + isAlive +
                 ", weight=" + weight +
@@ -64,12 +64,12 @@ public class Wolf extends Predator {
 
     @Override
     public String getName() {
-        return "Wolf";
+        return "Eagle";
     }
 
     @Override
     public int getMaxFood() {
-        return maxFood=8;
+        return maxFood;
     }
 
     @Override
@@ -138,16 +138,14 @@ public class Wolf extends Predator {
     }
     @Override
     public String getTypeResidents() {
-        return "Wolf";
+        return "Eagle";
     }
     @Override
     public int getAttack(String organisms) {
         return switch (organisms) {
-            case "Horse","Buffalo" -> 10;
-            case "Deer","Boar"->15;
-            case "Duck"->40;
-            case "Sheep"->70;
-            case "Rabbit", "Goat" -> 60;
+            case "Fox"->10;
+            case "Rabbit" -> 90;
+            case "Duck"->80;
             default ->0;
         };
     }

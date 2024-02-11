@@ -1,6 +1,5 @@
 package com.javarush.organism.animal.Predators;
 
-import com.javarush.organism.Organism;
 import com.javarush.organism.animal.Animal;
 
 public abstract class Predator extends Animal {

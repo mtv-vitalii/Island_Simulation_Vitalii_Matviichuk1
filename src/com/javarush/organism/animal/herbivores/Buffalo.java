@@ -5,7 +5,7 @@ import com.javarush.organism.Organism;
 
 import java.util.Objects;
 
-public class Goat extends Herbivores{
+public class Buffalo extends Herbivores{
     int maxFood;
     boolean isAlive;
     int weight;
@@ -17,9 +17,9 @@ public class Goat extends Herbivores{
     public Cell cell;
 
 
-    public Goat(String id, Integer weight) {
+    public Buffalo(String id, Integer weight) {
         super(id);
-        this.weight = 30;
+        this.weight = 700;
         this.id = id;
     }
 
@@ -30,12 +30,12 @@ public class Goat extends Herbivores{
 
     @Override
     public String getName() {
-        return "Goat";
+        return "Buffalo";
     }
 
     @Override
     public String toString() {
-        return "Goat{" +
+        return "Buffalo{" +
                 "maxFood=" + maxFood +
                 ", isAlive=" + isAlive +
                 ", weight=" + weight +
@@ -50,13 +50,13 @@ public class Goat extends Herbivores{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-        Goat goat = (Goat) o;
-        return maxFood == goat.maxFood && isAlive == goat.isAlive && weight == goat.weight && health == goat.health && maxAmount == goat.maxAmount && maxSpeed == goat.maxSpeed;
+        Buffalo buffalo = (Buffalo) o;
+        return maxFood == buffalo.maxFood && isAlive == buffalo.isAlive && weight == buffalo.weight && health == buffalo.health && maxAmount == buffalo.maxAmount && maxSpeed == buffalo.maxSpeed && Objects.equals(id, buffalo.id) && Objects.equals(name, buffalo.name) && Objects.equals(cell, buffalo.cell);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), maxFood, isAlive, weight, health, maxAmount, maxSpeed);
+        return Objects.hash(super.hashCode(), maxFood, isAlive, weight, health, maxAmount, maxSpeed, id, name, cell);
     }
 
     @Override
@@ -121,7 +121,7 @@ public class Goat extends Herbivores{
 
     @Override
     public String getTypeResidents() {
-        return "Goat";
+        return "Buffalo";
     }
 
     @Override
@@ -149,7 +149,7 @@ public class Goat extends Herbivores{
 
     @Override
     public Organism createOrganism(String type) {
-        return new Goat(getName(), getWeight());
+        return new Buffalo(getName(), getWeight());
     }
 
 }

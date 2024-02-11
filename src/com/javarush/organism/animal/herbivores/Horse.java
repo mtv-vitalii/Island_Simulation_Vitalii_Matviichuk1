@@ -2,7 +2,6 @@ package com.javarush.organism.animal.herbivores;
 
 import com.javarush.Map.Cell;
 import com.javarush.organism.Organism;
-import com.javarush.organism.Residents;
 
 
 public class Horse extends Herbivores{
@@ -16,7 +15,7 @@ public class Horse extends Herbivores{
     String name;
     public Cell cell;
 
-    public Horse(String id) {
+    public Horse(String id,Integer weight) {
         super(id);
         this.weight = 30;
         this.id = id;

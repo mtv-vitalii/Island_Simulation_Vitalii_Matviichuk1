@@ -80,5 +80,4 @@ public abstract class Organism {
     public int getAttack(String organism){
         return 0;
     }
-    //public void CreateOrganism();
 }

@@ -2,8 +2,6 @@ package com.javarush.organism.animal.herbivores;
 
 import com.javarush.Map.Cell;
 import com.javarush.organism.Organism;
-import com.javarush.organism.Residents;
-import com.javarush.organism.animal.Predators.Wolf;
 
 import java.util.Objects;
 
@@ -19,7 +17,7 @@ public class Rabbit extends Herbivores{
     String name;
     public Cell cell;
 
-    public Rabbit(String id) {
+    public Rabbit(String id,Integer weight) {
         super(id);
         this.weight = 30;
         this.id = id;

@@ -1,4 +1,4 @@
-package com.javarush.organism.animal;
+package com.javarush.OrganismsParameters;
 
 public class AnimalSpecies {
     private String name;
@@ -6,7 +6,6 @@ public class AnimalSpecies {
     private int maxCount;
     private int speed;
     private double fullness;
-    public AnimalSpecies(){}
 
     public AnimalSpecies(String name, double weight, int maxCount, int speed, double fullness) {
         this.name = name;
@@ -36,25 +35,6 @@ public class AnimalSpecies {
         return maxCount;
     }
 
-    public void setMaxCount(int maxCount) {
-        this.maxCount = maxCount;
-    }
-
-    public int getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
-    public double getFullness() {
-        return fullness;
-    }
-
-    public void setFullness(double fullness) {
-        this.fullness = fullness;
-    }
 
     @Override
     public String toString() {

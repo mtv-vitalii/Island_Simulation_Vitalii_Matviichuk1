@@ -1,14 +1,12 @@
-package com.javarush.organism;
+package com.javarush;
 
 import com.javarush.Map.Cell;
-import com.javarush.Map.Field;
+import com.javarush.organism.Organism;
 import com.javarush.organism.animal.Predators.Predator;
 import com.javarush.organism.animal.herbivores.Herbivores;
-import com.javarush.organism.plant.Grass;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 public class Eat {
@@ -35,11 +33,11 @@ public class Eat {
     private void handlePredator(Cell cell, Organism predator, List<Organism> deadOrganisms) {
         boolean hasEaten = false;
         for (Organism potentialPrey : new ArrayList<>(cell.getOrganism())) {
-            if (predator != potentialPrey && potentialPrey instanceof Herbivores) {
+            if (predator != potentialPrey) {
                 int attackProbability = predator.getAttack(potentialPrey.getTypeResidents());
                 int randomChance = (int) (Math.random() * 100);
                 if (randomChance < attackProbability) {
-                    cell.removeOrganism(potentialPrey); // Хижак їсть травоїдного
+                    cell.removeOrganism(potentialPrey); // Хижак їсть травоїдного або іншого хижака
                     hasEaten = true;
                     break;
                 }

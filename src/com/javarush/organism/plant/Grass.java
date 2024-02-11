@@ -1,5 +1,7 @@
 package com.javarush.organism.plant;
 
+import java.util.Objects;
+
 public class Grass extends Plant{
     boolean isAlive;
     int maxAmount;
@@ -14,6 +16,20 @@ public class Grass extends Plant{
     @Override
     public String getName() {
         return "Grass";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Grass grass = (Grass) o;
+        return isAlive == grass.isAlive && maxAmount == grass.maxAmount && Objects.equals(id, grass.id) && Objects.equals(name, grass.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), isAlive, maxAmount, id, name);
     }
 
     @Override

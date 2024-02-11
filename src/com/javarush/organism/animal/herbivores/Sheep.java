@@ -5,7 +5,7 @@ import com.javarush.organism.Organism;
 
 import java.util.Objects;
 
-public class Goat extends Herbivores{
+public class Sheep extends Herbivores{
     int maxFood;
     boolean isAlive;
     int weight;
@@ -17,9 +17,9 @@ public class Goat extends Herbivores{
     public Cell cell;
 
 
-    public Goat(String id, Integer weight) {
+    public Sheep(String id, Integer weight) {
         super(id);
-        this.weight = 30;
+        this.weight = 70;
         this.id = id;
     }
 
@@ -30,12 +30,12 @@ public class Goat extends Herbivores{
 
     @Override
     public String getName() {
-        return "Goat";
+        return "Sheep";
     }
 
     @Override
     public String toString() {
-        return "Goat{" +
+        return "Sheep{" +
                 "maxFood=" + maxFood +
                 ", isAlive=" + isAlive +
                 ", weight=" + weight +
@@ -50,18 +50,18 @@ public class Goat extends Herbivores{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-        Goat goat = (Goat) o;
-        return maxFood == goat.maxFood && isAlive == goat.isAlive && weight == goat.weight && health == goat.health && maxAmount == goat.maxAmount && maxSpeed == goat.maxSpeed;
+        Sheep sheep = (Sheep) o;
+        return maxFood == sheep.maxFood && isAlive == sheep.isAlive && weight == sheep.weight && health == sheep.health && maxAmount == sheep.maxAmount && maxSpeed == sheep.maxSpeed && Objects.equals(id, sheep.id) && Objects.equals(name, sheep.name) && Objects.equals(cell, sheep.cell);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), maxFood, isAlive, weight, health, maxAmount, maxSpeed);
+        return Objects.hash(super.hashCode(), maxFood, isAlive, weight, health, maxAmount, maxSpeed, id, name, cell);
     }
 
     @Override
     public int getMaxFood() {
-        return maxFood=10;
+        return maxFood;
     }
 
     @Override
@@ -121,7 +121,7 @@ public class Goat extends Herbivores{
 
     @Override
     public String getTypeResidents() {
-        return "Goat";
+        return "Sheep";
     }
 
     @Override
@@ -149,7 +149,7 @@ public class Goat extends Herbivores{
 
     @Override
     public Organism createOrganism(String type) {
-        return new Goat(getName(), getWeight());
+        return new Sheep(getName(), getWeight());
     }
 
 }
